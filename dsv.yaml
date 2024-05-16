@@ -1,0 +1,67 @@
+appName: rhsso
+runtime: openshift
+ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  - name: https
+    protocol: TCP
+    port: 8443
+    targetPort: 8443
+service:
+  name: rhbk-service
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  labels:
+    app: keycloak
+    app.kubernetes.io/instance: rhbk
+    app.kubernetes.io/managed-by: keycloak-operator
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
+route:
+  targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  labels:
+    app.kubernetes.io/instance: rhbk
+deployment:
+  additionalOptions:
+    - name: health-enabled
+      value: 'true'
+    - name: metrics-enabled
+      value: 'true'
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 2
+      memory: 4Gi
+  replicas: 1
+db:
+  host: postgres-db
+  passwordSecret:
+    key: password
+    name: keycloak-db-secret
+  poolInitialSize: 5
+  poolMaxSize: 10
+  poolMinSize: 5
+  port: 5432
+  usernameSecret:
+    key: username
+    name: keycloak-db-secret
+  vendor: postgres
+route:
+  hostname:
+    strict: false  
+  http:
+    httpEnabled: true
+    httpPort: 8080
+    httpsPort: 8443
+    tlsSecret: sso-x509-https-secret
+  ingress:
+    enabled: true
+proxy:
+  headers: xforwarded

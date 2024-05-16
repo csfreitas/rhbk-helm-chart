@@ -1,0 +1,9 @@
+apiVersion: v2
+name: <<< Replace.appName >>>-gitops
+description: A application GitOps Helm chart for OpenShift.
+type: application
+version: 1.0.0
+maintainers:
+  - name: Cassio Freitas
+    email: csilvade@redhat.com
+

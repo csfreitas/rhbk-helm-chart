@@ -1,0 +1,29 @@
+{{- $appName := .Values.appName -}}
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.service.name }}
+  {{- if .Values.service.annotations }}
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  {{- end }}
+  labels:
+    app: {{ $appName }}
+  {{- if .Values.service.labels }}
+    {{- toYaml .Values.service.labels | nindent 4 }}
+  {{- end }}
+spec:
+  internalTrafficPolicy: {{ .Values.service.internalTrafficPolicy }}
+  type: {{ .Values.service.type }}
+  ports:
+    {{- range $ports := .Values.ports }}
+    - name: {{ $ports.name }}
+      protocol: {{ $ports.protocol }}
+      port: {{ $ports.port }}
+      targetPort: {{ $ports.port }}
+    {{- end }}
+  selector:
+    deploymentConfig: {{ $appName }}
+
+

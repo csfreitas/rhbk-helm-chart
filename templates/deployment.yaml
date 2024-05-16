@@ -1,0 +1,57 @@
+{{- $appName := .Values.appName -}}
+{{- $annotations := .Values.deployment.annotations -}}
+{{- $labels := .Values.deployment.labels -}}
+{{- $additionalOptions := .Values.deployment.additionalOptions }}
+{{- $resources := .Values.deployment.resources }}
+{{- $image := .Values.deployment.image }}
+{{- $db := .Values.db }}
+{{- $hostname := .Values.route.hostname }}
+{{- $http := .Values.route.http }}
+{{- $ingress := .Values.route.ingress }}
+{{- $image := .Values.deployment.image }}
+
+# RHBK CR
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: {{ $appName }}
+  {{- if $annotations }}
+  annotations:
+    {{- toYaml $annotations | nindent 4 }}
+  {{- end }}
+  labels:
+    app: {{ $appName }}
+  {{- if $labels }}
+    {{- toYaml $labels | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if $image }}
+  image: {{ $image }}
+  {{- end }}
+  {{- if $additionalOptions }}
+  additionalOptions:
+    {{- toYaml $additionalOptions | nindent 4 }}
+  {{- end }}
+  {{- if $db }}
+  db:
+    {{- toYaml $db | nindent 4 }}
+  {{- end }}
+  {{- if $hostname }}
+  hostname:
+    {{- toYaml $hostname | nindent 4 }}
+  {{- end }}
+  {{- if $http }}
+  http:
+    {{- toYaml $http | nindent 4 }}
+  {{- end }}
+  {{- if $ingress }}
+  ingress:
+    {{- toYaml $ingress | nindent 4 }}
+  {{- end }}
+  instances: {{ .Values.deployment.replicas }}
+  proxy:
+    headers: {{ .Values.proxy.headers }}
+  {{- if $resources }}
+  resources:
+    {{- toYaml $resources | nindent 4 }}
+  {{- else }}

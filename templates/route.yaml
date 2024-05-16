@@ -1,0 +1,44 @@
+{{- if .Values.route }}
+
+{{- $annotations := .Values.route.annotations -}}
+{{- $labels := .Values.route.labels -}}
+{{- $appName := .Values.appName -}}
+{{- $host := .Values.route.host -}}
+{{- $tls := .Values.route.tls -}}
+{{- $wildcardPolicy := .Values.route.wildcardPolicy -}}
+
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ $appName }}
+  {{- if $annotations }}
+  annotations:
+    {{- toYaml $annotations | nindent 4 }}
+  {{- end }}
+  labels:
+    app: {{ $appName }}
+    app.kubernetes.io/component: {{ $appName }}
+    app.kubernetes.io/instance: {{ $appName }}
+    app.kubernetes.io/name: {{ $appName }}
+  {{- if $labels }}
+    {{- toYaml $labels | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if $wildcardPolicy }}
+  wildcardPolicy: {{ $wildcardPolicy }}
+  {{- end }}
+  {{- if $host }}
+  host: {{ $host }}
+  {{- else }}
+  host: 
+  {{- end }}
+  {{- if $tls }}
+  tls:
+    {{- toYaml $tls | nindent 4 }}
+  {{- end }}
+  to:
+    kind: Service
+    name: {{ .Values.service.name }}
+  port:
+    targetPort: {{ .Values.route.targetPort }}
+{{- end }}
