@@ -9,6 +9,7 @@
 {{- $http := .Values.route.http -}}
 {{- $ingress := .Values.route.ingress -}}
 
+---
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
 metadata:
@@ -52,4 +53,4 @@ spec:
   {{- if $resources }}
   resources:
     {{- toYaml $resources | nindent 4 }}
-  {{- else }}
+  {{- end }}  
