@@ -1,5 +1,5 @@
 apiVersion: v3
-name: <<< Replace.appName >>>-gitops
+name: rhbk-gitops
 description: A application GitOps Helm chart for OpenShift.
 type: application
 version: 1.0.0

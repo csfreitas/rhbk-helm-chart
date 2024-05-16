@@ -8,7 +8,6 @@
 {{- $hostname := .Values.route.hostname -}}
 {{- $http := .Values.route.http -}}
 {{- $ingress := .Values.route.ingress -}}
-{{- $image := .Values.deployment.image -}}
 
 # RHBK CR
 apiVersion: k8s.keycloak.org/v2alpha1
