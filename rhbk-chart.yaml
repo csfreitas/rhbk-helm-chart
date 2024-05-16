@@ -1,5 +1,4 @@
 appName: rhsso
-runtime: openshift
 ports:
   - name: http
     protocol: TCP
