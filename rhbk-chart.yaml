@@ -33,11 +33,11 @@ deployment:
       value: 'true'
   resources:
     limits:
-      cpu: 4
-      memory: 8Gi
-    requests:
       cpu: 2
-      memory: 4Gi
+      memory: 3Gi
+    requests:
+      cpu: 1
+      memory: 2Gi
   replicas: 1
 db:
   host: postgres-db
