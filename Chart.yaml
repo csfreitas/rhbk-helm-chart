@@ -1,4 +1,4 @@
-apiVersion: v3
+apiVersion: v2
 name: rhbk-helm-chart
 description: A application GitOps Helm chart for OpenShift.
 type: application
