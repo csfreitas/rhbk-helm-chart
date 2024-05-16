@@ -1,14 +1,14 @@
 {{- $appName := .Values.appName -}}
 {{- $annotations := .Values.deployment.annotations -}}
 {{- $labels := .Values.deployment.labels -}}
-{{- $additionalOptions := .Values.deployment.additionalOptions }}
-{{- $resources := .Values.deployment.resources }}
-{{- $image := .Values.deployment.image }}
-{{- $db := .Values.db }}
-{{- $hostname := .Values.route.hostname }}
-{{- $http := .Values.route.http }}
-{{- $ingress := .Values.route.ingress }}
-{{- $image := .Values.deployment.image }}
+{{- $additionalOptions := .Values.deployment.additionalOptions -}}
+{{- $resources := .Values.deployment.resources -}}
+{{- $image := .Values.deployment.image -}}
+{{- $db := .Values.db -}}
+{{- $hostname := .Values.route.hostname -}}
+{{- $http := .Values.route.http -}}
+{{- $ingress := .Values.route.ingress -}}
+{{- $image := .Values.deployment.image -}}
 
 # RHBK CR
 apiVersion: k8s.keycloak.org/v2alpha1

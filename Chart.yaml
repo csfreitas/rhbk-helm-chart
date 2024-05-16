@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v3
 name: <<< Replace.appName >>>-gitops
 description: A application GitOps Helm chart for OpenShift.
 type: application
