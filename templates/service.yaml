@@ -23,7 +23,5 @@ spec:
       port: {{ $ports.port }}
       targetPort: {{ $ports.port }}
     {{- end }}
-  selector:
-    deploymentConfig: {{ $appName }}
 
 

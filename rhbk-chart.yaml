@@ -1,4 +1,4 @@
-appName: rhsso
+appName: rhbk
 ports:
   - name: http
     protocol: TCP
