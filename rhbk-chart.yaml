@@ -13,12 +13,13 @@ service:
   internalTrafficPolicy: Cluster
   type: ClusterIP
   labels:
-    app.kubernetes.io/instance: rhbk
+    app2: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
   labels:
+    app2: rhbk
     app.kubernetes.io/instance: rhbk
   additionalOptions:
     - name: health-enabled
