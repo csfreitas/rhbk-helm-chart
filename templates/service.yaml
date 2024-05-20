@@ -1,3 +1,4 @@
+{{- if .Values.service }}
 {{- $appName := .Values.appName -}}
 
 kind: Service
@@ -23,5 +24,6 @@ spec:
       port: {{ $ports.port }}
       targetPort: {{ $ports.port }}
     {{- end }}
+{{- end }}
 
 
