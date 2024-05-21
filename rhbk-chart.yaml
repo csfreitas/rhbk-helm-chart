@@ -9,7 +9,7 @@ ports:
     port: 8443
     targetPort: 8443
 service:
-  name: rhbk-service
+  name: rhbk-service2
   internalTrafficPolicy: Cluster
   type: ClusterIP
   labels:
