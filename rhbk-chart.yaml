@@ -13,11 +13,15 @@ service:
   internalTrafficPolicy: Cluster
   type: ClusterIP
   labels:
+    app: rhbk
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
+  labels:
+    app: rhbk
+    app.kubernetes.io/instance: rhbk
   additionalOptions:
     - name: health-enabled
       value: 'true'
@@ -53,10 +57,10 @@ db:
     key: username
     name: keycloak-db-secret
   vendor: postgres
-# route: 
-#   targetPort: 8080
-#   tls:
-#     termination: edge
-#     insecureEdgeTerminationPolicy: Redirect
+route: 
+  targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
 proxy:
   headers: xforwarded

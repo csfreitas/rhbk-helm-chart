@@ -19,7 +19,6 @@ metadata:
     {{- toYaml $annotations | nindent 4 }}
   {{- end }}
   labels:
-    app: {{ $appName }}
   {{- if $labels }}
     {{- toYaml $labels | nindent 4 }}
   {{- end }}

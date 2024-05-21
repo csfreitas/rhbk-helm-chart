@@ -10,7 +10,6 @@ metadata:
     {{- toYaml .Values.service.annotations | nindent 4 }}
   {{- end }}
   labels:
-    app: {{ $appName }}
   {{- if .Values.service.labels }}
     {{- toYaml .Values.service.labels | nindent 4 }}
   {{- end }}
