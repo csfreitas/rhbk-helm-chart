@@ -18,6 +18,8 @@ service:
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
+ labels:
+    app: rhbk
   additionalOptions:
     - name: health-enabled
       value: 'true'
