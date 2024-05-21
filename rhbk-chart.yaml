@@ -18,8 +18,6 @@ service:
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
- labels:
-    app: rhbk
   additionalOptions:
     - name: health-enabled
       value: 'true'
@@ -55,10 +53,10 @@ db:
     key: username
     name: keycloak-db-secret
   vendor: postgres
-# route: 
-#   targetPort: 8080
-#   tls:
-#     termination: edge
-#     insecureEdgeTerminationPolicy: Redirect
+route: 
+  targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
 proxy:
   headers: xforwarded
