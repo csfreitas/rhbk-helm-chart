@@ -5,9 +5,9 @@
 {{- $resources := .Values.deployment.resources -}}
 {{- $image := .Values.deployment.image -}}
 {{- $db := .Values.db -}}
-{{- $hostname := .Values.route.hostname -}}
-{{- $http := .Values.route.http -}}
-{{- $ingress := .Values.route.ingress -}}
+{{- $hostname := .Values.deployment.hostname -}}
+{{- $http := .Values.deployment.http -}}
+{{- $ingress := .Values.deployment.ingress -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1

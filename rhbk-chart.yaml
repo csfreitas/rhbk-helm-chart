@@ -22,6 +22,15 @@ deployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
+  hostname:
+    strict: false 
+  http:
+    httpEnabled: true
+    httpPort: 8080
+    httpsPort: 8443
+    tlsSecret: sso-x509-https-secret
+  ingress:
+    enabled: true
   resources:
     limits:
       cpu: 2
@@ -43,19 +52,10 @@ db:
     key: username
     name: keycloak-db-secret
   vendor: postgres
-route:
-  hostname:
-    strict: false  
-  http:
-    httpEnabled: true
-    httpPort: 8080
-    httpsPort: 8443
-    tlsSecret: sso-x509-https-secret
-  ingress:
-    enabled: true
-  targetPort: 8080
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+# route: 
+#   targetPort: 8080
+#   tls:
+#     termination: edge
+#     insecureEdgeTerminationPolicy: Redirect
 proxy:
   headers: xforwarded
