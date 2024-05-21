@@ -8,16 +8,16 @@ ports:
     protocol: TCP
     port: 8443
     targetPort: 8443
-service:
-  name: rhbk-service
-  internalTrafficPolicy: Cluster
-  type: ClusterIP
-  labels:
-    app: keycloak
-    app.kubernetes.io/instance: rhbk
-    app.kubernetes.io/managed-by: keycloak-operator
-  annotations:
-    service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
+# service:
+#   name: rhbk-service
+#   internalTrafficPolicy: Cluster
+#   type: ClusterIP
+#   labels:
+#     app: keycloak
+#     app.kubernetes.io/instance: rhbk
+#     app.kubernetes.io/managed-by: keycloak-operator
+#   annotations:
+#     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
   labels:
     app: rhbk
@@ -56,10 +56,10 @@ db:
     key: username
     name: keycloak-db-secret
   vendor: postgres
-route: 
-  targetPort: 8080
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+# route: 
+#   targetPort: 8080
+#   tls:
+#     termination: edge
+#     insecureEdgeTerminationPolicy: Redirect
 proxy:
   headers: xforwarded
