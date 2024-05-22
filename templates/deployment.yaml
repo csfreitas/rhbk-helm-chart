@@ -8,7 +8,7 @@
 {{- $hostname := .Values.deployment.hostname -}}
 {{- $http := .Values.deployment.http -}}
 {{- $ingress := .Values.deployment.ingress -}}
-{{- $ingress := .Values.deployment.unsupported -}}
+{{- $unsupported := .Values.deployment.unsupported -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1
