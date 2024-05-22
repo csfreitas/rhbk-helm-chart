@@ -31,7 +31,7 @@ deployment:
               fieldRef:
                 fieldPath: spec.nodeName
           - name: JAVA_OPTS_APPEND
-            value: '-Djgroups.transport.machine.name="$(env | grep  \\'NODE_NAME=\\' | cut -d\\'=\\' -f2)"'
+            value: -Djgroups.transport.machine.name="$(env | grep  'NODE_NAME=' | cut -d'=' -f2)"
           - name: PRINT_ENV
             value: "true"
   additionalOptions:
