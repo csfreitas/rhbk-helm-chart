@@ -31,6 +31,8 @@ deployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
+    - name: MACHINE_NAME
+      value: 'teste'
   hostname:
     strict: false 
   http:
