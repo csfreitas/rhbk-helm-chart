@@ -9,6 +9,7 @@
 {{- $http := .Values.deployment.http -}}
 {{- $ingress := .Values.deployment.ingress -}}
 {{- $unsupported := .Values.deployment.unsupported -}}
+{{- $cache := .Values.deployment.cache -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1
@@ -24,6 +25,10 @@ metadata:
     {{- toYaml $labels | nindent 4 }}
   {{- end }}
 spec:
+  {{- if $cache }}
+  cache:
+     {{- toYaml $cache | nindent 4 }}
+  {{- end }}
   {{- if $unsupported }}
   unsupported:
      {{- toYaml $unsupported | nindent 4 }}
