@@ -25,9 +25,6 @@ metadata:
     {{- toYaml $labels | nindent 4 }}
   {{- end }}
 spec:
-  env:
-    - name: JAVA_OPTS_APPEND
-      value: "-Dsome.property=value -Danother.property=value"
   {{- if $cache }}
   cache:
      {{- toYaml $cache | nindent 4 }}

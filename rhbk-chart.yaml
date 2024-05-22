@@ -30,6 +30,8 @@ deployment:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+          - name: JAVA_OPTS_APPEND
+            value: "-Djgroups.transport.machine.name=$NODE_NAME"
   additionalOptions:
     - name: health-enabled
       value: 'true'
