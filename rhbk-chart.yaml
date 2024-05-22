@@ -18,6 +18,15 @@ service:
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
+  unsupported:
+    podTemplate:
+      spec:
+        containers:
+        - env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
   additionalOptions:
     - name: health-enabled
       value: 'true'

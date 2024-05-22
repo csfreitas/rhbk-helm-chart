@@ -8,6 +8,7 @@
 {{- $hostname := .Values.deployment.hostname -}}
 {{- $http := .Values.deployment.http -}}
 {{- $ingress := .Values.deployment.ingress -}}
+{{- $ingress := .Values.deployment.unsupported -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1
@@ -23,6 +24,10 @@ metadata:
     {{- toYaml $labels | nindent 4 }}
   {{- end }}
 spec:
+  {{- if $unsupported }}
+  unsupported:
+     {{- toYaml $unsupported | nindent 4 }}
+  {{- end }}
   {{- if $image }}
   image: {{ $image }}
   {{- end }}
