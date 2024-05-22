@@ -17,6 +17,7 @@ service:
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
+  image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   cache:
     configMapFile:
       key: cache-ispn.xml
@@ -30,8 +31,6 @@ deployment:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          - name: JAVA_OPTS_APPEND
-            value: -Djgroups.transport.machine.name='$(env | grep  'NODE_NAME=' | cut -d'=' -f2)'
           - name: PRINT_ENV
             value: "true"
   additionalOptions:
