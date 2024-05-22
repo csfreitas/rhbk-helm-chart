@@ -31,7 +31,9 @@ deployment:
               fieldRef:
                 fieldPath: spec.nodeName
           - name: JAVA_OPTS_APPEND
-            value: -Djgroups.transport.machine.name=$(printf ${NODE_NAME})
+            value: -Djgroups.transport.machine.name='$(printf ${NODE_NAME})'
+          - name: PRINT_ENV
+            value: true
   additionalOptions:
     - name: health-enabled
       value: 'true'
