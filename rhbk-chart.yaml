@@ -31,14 +31,12 @@ deployment:
               fieldRef:
                 fieldPath: spec.nodeName
           - name: JAVA_OPTS_APPEND
-            value: "-Djgroups.transport.machine.name='${NODE_NAME}'"
+            value: -Djgroups.transport.machine.name=${NODE_NAME}
   additionalOptions:
     - name: health-enabled
       value: 'true'
     - name: metrics-enabled
       value: 'true'
-    - name: JAVA_OPTS_APPEND
-      value: '-Djgroups.transport.machine.name=$NODE_NAME'
   hostname:
     strict: false 
   http:
