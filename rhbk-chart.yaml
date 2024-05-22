@@ -35,7 +35,7 @@ deployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
-    - name: java-opts-append
+    - name: JAVA_OPTS_APPEND
       value: '-Djgroups.transport.machine.name=$NODE_NAME'
   hostname:
     strict: false 
