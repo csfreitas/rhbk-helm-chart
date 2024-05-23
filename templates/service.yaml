@@ -16,6 +16,10 @@ metadata:
 spec:
   internalTrafficPolicy: {{ .Values.service.internalTrafficPolicy }}
   type: {{ .Values.service.type }}
+  selector:
+    app: keycloak
+    app.kubernetes.io/instance: rhbk
+    app.kubernetes.io/managed-by: keycloak-operator
   ports:
     {{- range $ports := .Values.ports }}
     - name: {{ $ports.name }}
