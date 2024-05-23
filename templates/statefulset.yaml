@@ -1,4 +1,5 @@
 {{- if .Values.deployment }}
+{{- $appName := .Values.appName -}}
 ## StatefulSet RHBK gerado pelo operator
 {{- $stannotations := .Values.deployment.annotations -}}
 {{- $stlabels := .Values.deployment.labels -}}
