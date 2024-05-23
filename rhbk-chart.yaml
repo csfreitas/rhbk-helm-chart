@@ -61,7 +61,7 @@ kcdeployment:
   replicas: 3
 deployment:
   annotations: 
-   helm.sh/hook: post-install
+   helm.sh/hook: post-install,post-upgrade
    helm.sh/hook-weight: "5"
   labels:
     app: keycloak
