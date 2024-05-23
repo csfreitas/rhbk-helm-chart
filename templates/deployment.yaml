@@ -79,14 +79,14 @@ metadata:
   annotations:
     {{- toYaml $stannotations | nindent 4 }}
   {{- end }}
-  labels:
   {{- if $stlabels }}
+  labels:
     {{- toYaml $stlabels | nindent 4 }}
   {{- end }}
 spec:
   selector:
-    matchLabels:
     {{- if $stlabels }}
+    matchLabels:
       {{- toYaml $stlabels | nindent 6 }}
     {{- end }}
   template:
