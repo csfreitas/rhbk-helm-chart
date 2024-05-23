@@ -9,9 +9,9 @@ ports:
     port: 8443
     targetPort: 8443
 kcdeployment:
-  annotations: 
-    helm.sh/hook: post-install
-    helm.sh/hook-weight: "-1"
+  # annotations: 
+  #   helm.sh/hook: post-install
+  #   helm.sh/hook-weight: "-1"
   startOptimized: true
   # image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   image: registry.redhat.io/rhbk/keycloak-rhel9:24
@@ -61,6 +61,9 @@ kcdeployment:
       memory: 2Gi
   replicas: 1
 deployment:
+  annotations: 
+    helm.sh/hook: post-install
+    helm.sh/hook-weight: "-1"
   labels:
     app: keycloak
     app.kubernetes.io/instance: rhbk
