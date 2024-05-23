@@ -18,10 +18,10 @@ service:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 deployment:
   image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
-  cache:
-    configMapFile:
-      key: cache-ispn.xml
-      name: rhbk-caches-config
+  # cache:
+  #   configMapFile:
+  #     key: cache-ispn.xml
+  #     name: rhbk-caches-config
   unsupported:
     podTemplate:
       spec:
