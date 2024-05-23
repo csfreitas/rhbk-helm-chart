@@ -63,7 +63,7 @@ deployment:
     requests:
       cpu: 1
       memory: 2Gi
-  replicas: 2
+  replicas: 6
 db:
   host: postgres-db
   passwordSecret:
