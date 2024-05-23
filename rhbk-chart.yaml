@@ -59,15 +59,15 @@ kcdeployment:
       cpu: 1
       memory: 2Gi
   replicas: 3
-deployment:
-  labels:
-    app: keycloak
-    app.kubernetes.io/instance: rhbk
-    app.kubernetes.io/managed-by: keycloak-operator
-  annotations:
-    helm.sh/hook: pre-install 
-    helm.sh/hook-weight: "10"
-  configMapEnv: teste
+# deployment:
+#   labels:
+#     app: keycloak
+#     app.kubernetes.io/instance: rhbk
+#     app.kubernetes.io/managed-by: keycloak-operator
+#   annotations:
+#     helm.sh/hook: pre-install 
+#     helm.sh/hook-weight: "10"
+#   configMapEnv: teste
 db:
   host: postgres-db
   passwordSecret:
