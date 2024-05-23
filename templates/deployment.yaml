@@ -84,7 +84,17 @@ metadata:
     {{- toYaml $stlabels | nindent 4 }}
   {{- end }}
 spec:
+  selector:
+    {{- if $stlabels }}
+    matchLabels:
+      {{- toYaml $stlabels | nindent 6 }}
+    {{- end }}
   template:
+    metadata:
+      {{- if $stlabels }}
+      labels:
+        {{- toYaml $stlabels | nindent 8 }}
+      {{- end }}
     spec:
       containers:
         - name: keycloak
