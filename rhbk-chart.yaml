@@ -38,6 +38,8 @@ deployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
+    - name: cache-config-file
+      value: '/opt/keycloak/conf/cache-ispn.xml'
   hostname:
     strict: false 
   http:
