@@ -84,11 +84,6 @@ metadata:
     {{- toYaml $stlabels | nindent 4 }}
   {{- end }}
 spec:
-  selector:
-    {{- if $stlabels }}
-    matchLabels:
-      {{- toYaml $stlabels | nindent 6 }}
-    {{- end }}
   template:
     spec:
       containers:
