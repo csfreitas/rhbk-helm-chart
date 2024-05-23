@@ -9,6 +9,9 @@ ports:
     port: 8443
     targetPort: 8443
 kcdeployment:
+  annotations:
+    helm.sh/hook": pre-install
+    helm.sh/hook-weight": "-1"
   startOptimized: true
   image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   # cache:
@@ -83,6 +86,8 @@ service:
     app: keycloak
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
+    helm.sh/hook: post-install 
+    helm.sh/hook-weight: "5"
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 route: 
   targetPort: 8080

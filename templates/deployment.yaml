@@ -65,24 +65,3 @@ spec:
   resources:
     {{- toYaml $resources | nindent 4 }}
   {{- end }}  
-
-
-## JOB POST INSTALL
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: keycloak-postinstall
-  labels:
-    app: keycloak
-  annotations:
-    "helm.sh/hook": post-install
-    "helm.sh/hook-delete-policy": hook-succeeded  
-spec:
-  template:
-    spec:
-      containers:
-      - name: keycloak
-        env:
-        - name: TESTES
-          value: TESTES
-
