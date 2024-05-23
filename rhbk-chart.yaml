@@ -62,9 +62,6 @@ kcdeployment:
 deployment:
   labels:
     app.kubernetes.io/managed-by: keycloak-operator
-  annotations:
-    helm.sh/hook: post-install 
-    helm.sh/hook-weight: "5"
   configMapEnv: teste
 db:
   host: postgres-db
@@ -88,8 +85,6 @@ service:
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
-    helm.sh/hook: post-install 
-    helm.sh/hook-weight: "5"
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 route: 
   targetPort: 8080
