@@ -1,0 +1,44 @@
+{{- if .Values.deployment }}
+## StatefulSet RHBK gerado pelo operator
+{{- $stannotations := .Values.deployment.annotations -}}
+{{- $stlabels := .Values.deployment.labels -}}
+{{- $stimage := .Values.kcdeployment.image -}}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ $appName }}
+  {{- if $stannotations }}
+  annotations:
+    {{- toYaml $stannotations | nindent 4 }}
+  {{- end }}
+  {{- if $stlabels }}
+  labels:
+    {{- toYaml $stlabels | nindent 4 }}
+  {{- end }}
+spec:
+  selector:
+    {{- if $stlabels }}
+    matchLabels:
+      {{- toYaml $stlabels | nindent 6 }}
+    {{- end }}
+  template:
+    metadata:
+      {{- if $stlabels }}
+      labels:
+        {{- toYaml $stlabels | nindent 8 }}
+      {{- end }}
+    spec:
+      containers:
+        - name: keycloak
+          image: {{ $stimage }}
+          env:
+          - name: NODE_NAME2
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.deployment.configMapEnv }}
+{{- end }}
