@@ -94,7 +94,8 @@ spec:
   template:
     spec:
       containers:
-        - env:
+        - name: keycloak
+          env:
           - name: NODE_NAME2
             valueFrom:
               fieldRef:
