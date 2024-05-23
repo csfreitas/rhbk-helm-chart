@@ -25,6 +25,7 @@ metadata:
     {{- toYaml $labels | nindent 4 }}
   {{- end }}
 spec:
+  startOptimized: false
   {{- if $cache }}
   cache:
      {{- toYaml $cache | nindent 4 }}
