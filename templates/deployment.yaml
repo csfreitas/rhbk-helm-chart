@@ -86,9 +86,20 @@ metadata:
     {{- toYaml $stlabels | nindent 4 }}
   {{- end }}
 spec:
+  selector:
+    matchLabels:
+    {{- if $stlabels }}
+      {{- toYaml $stlabels | nindent 6 }}
+    {{- end }}
   template:
     spec:
       containers:
-        - envFrom:
-          - configMapRef: 
+        - env:
+          - name: NODE_NAME2
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          envFrom:
+          - configMapRef:
               name: {{ .Values.deployment.configMapEnv }}

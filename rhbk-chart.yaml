@@ -60,6 +60,7 @@ deployment:
   configMapEnv: teste
   labels:
     app: keycloak
+    app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
 db:
   host: postgres-db
