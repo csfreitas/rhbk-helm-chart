@@ -10,7 +10,7 @@ ports:
     targetPort: 8443
 kcdeployment:
   annotations: 
-    helm.sh/hook: pre-install
+    helm.sh/hook: pre-install,pre-upgrade
     helm.sh/hook-weight: "5"
   startOptimized: true
   image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
@@ -106,7 +106,7 @@ service:
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
-    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook: pre-install, pre-upgrade
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 route: 
   targetPort: 8080
