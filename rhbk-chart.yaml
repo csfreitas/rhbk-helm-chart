@@ -80,8 +80,6 @@ deployment:
         fieldRef:
           apiVersion: v1
           fieldPath: status.hostIP
-    - name: OI
-      value: "OI"
     - name: PRINT_ENV
       value: "true"
   envFrom:
