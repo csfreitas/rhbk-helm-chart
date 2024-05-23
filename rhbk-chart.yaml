@@ -58,6 +58,9 @@ kcdeployment:
   replicas: 6
 deployment:
   configMapEnv: teste
+  labels:
+    app: keycloak
+    app.kubernetes.io/managed-by: keycloak-operator
 db:
   host: postgres-db
   passwordSecret:
