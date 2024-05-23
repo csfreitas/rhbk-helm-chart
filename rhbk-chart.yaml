@@ -31,6 +31,10 @@ deployment:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+          - name: HOST_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.hostIP
           - name: PRINT_ENV
             value: "true"
   additionalOptions:
@@ -40,6 +44,8 @@ deployment:
       value: 'true'
     - name: cache-config-file
       value: 'cache-ispn.xml'
+    - name: RUN_IN_CONTAINER
+      value: 'true'
   hostname:
     strict: false 
   http:
