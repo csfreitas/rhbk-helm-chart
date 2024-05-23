@@ -43,8 +43,6 @@ deployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
-    - name: cache-config-file
-      value: 'cache-ispn.xml'
     - name: KC_RUN_IN_CONTAINER
       value: 'true'
   hostname:
