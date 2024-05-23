@@ -98,6 +98,7 @@ spec:
     spec:
       containers:
         - name: keycloak
+          image: {{ $image }}
           env:
           - name: NODE_NAME2
             valueFrom:
