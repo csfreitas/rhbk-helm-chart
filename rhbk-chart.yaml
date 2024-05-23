@@ -61,7 +61,7 @@ kcdeployment:
   replicas: 0
 deployment:
   annotations: 
-   helm.sh/hook: post-install,post-upgrade
+   helm.sh/hook: pre-install
    helm.sh/hook-weight: "10"
   labels:
     app: keycloak
@@ -106,7 +106,7 @@ service:
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
-    helm.sh/hook: pre-install,post-install,pre-upgrade
+    helm.sh/hook: pre-install
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 route: 
   targetPort: 8080
