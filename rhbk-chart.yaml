@@ -57,6 +57,9 @@ kcdeployment:
       memory: 2Gi
   replicas: 3
 deployment:
+  annotations: 
+   helm.sh/hook: post-install
+   helm.sh/hook-weight: "5"
   labels:
     app: keycloak
     app.kubernetes.io/instance: rhbk
