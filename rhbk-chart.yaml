@@ -38,8 +38,8 @@ kcdeployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
-    - name: cache-config-file
-      value: 'cache-ispn.xml'
+    # - name: cache-config-file
+    #   value: 'cache-ispn.xml'
     - name: RUN_IN_CONTAINER
       value: 'true'
   hostname:
