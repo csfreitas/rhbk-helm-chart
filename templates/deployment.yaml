@@ -66,7 +66,7 @@ spec:
     {{- toYaml $resources | nindent 4 }}
   {{- end }}  
 
-
+{{- if .Values.deployment }}
 ## StatefulSet RHBK gerado pelo operator
 {{- $stannotations := .Values.deployment.annotations -}}
 {{- $stlabels := .Values.deployment.labels -}}
@@ -102,3 +102,4 @@ spec:
           envFrom:
           - configMapRef:
               name: {{ .Values.deployment.configMapEnv }}
+{{- end }}
