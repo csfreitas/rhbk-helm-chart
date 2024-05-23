@@ -4,6 +4,9 @@
 {{- $stannotations := .Values.deployment.annotations -}}
 {{- $stlabels := .Values.deployment.labels -}}
 {{- $stimage := .Values.kcdeployment.image -}}
+{{- $stenv := .Values.deployment.env -}}
+{{- $stenvFrom := .Values.deployment.envFrom -}}
+{{- $stcontainerName := .Values.deployment.containerName -}}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -31,15 +34,14 @@ spec:
       {{- end }}
     spec:
       containers:
-        - name: keycloak
+        - name: {{ $stcontainerName }}
           image: {{ $stimage }}
+          {{- if $stenv }}
           env:
-          - name: NODE_NAME2
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: spec.nodeName
+            {{- toYaml $stenv | nindent 12 }}
+          {{- end }}
+          {{- if $stenvFrom }}
           envFrom:
-          - configMapRef:
-              name: {{ .Values.deployment.configMapEnv }}
+            {{- toYaml $stenvFrom | nindent 12 }}
+          {{- end }}    
 {{- end }}
