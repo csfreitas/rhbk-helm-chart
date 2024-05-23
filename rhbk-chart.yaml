@@ -104,7 +104,6 @@ service:
   type: ClusterIP
   labels:
     app: keycloak
-    app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
