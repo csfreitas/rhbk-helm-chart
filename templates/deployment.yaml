@@ -67,40 +67,57 @@ spec:
   {{- end }}  
 
 
-
-## StatefulSet RHBK gerado pelo operator
-
-{{- $stannotations := .Values.deployment.annotations -}}
-{{- $stlabels := .Values.deployment.labels -}}
----
-apiVersion: apps/v1
-kind: StatefulSet
+## JOB POST INSTALL
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: {{ $appName }}
-  {{- if $stannotations }}
-  annotations:
-    {{- toYaml $stannotations | nindent 4 }}
-  {{- end }}
+  name: keycloak-postinstall
   labels:
-  {{- if $stlabels }}
-    {{- toYaml $stlabels | nindent 4 }}
-  {{- end }}
+    app: keycloak
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-delete-policy": hook-succeeded  
 spec:
-  selector:
-    matchLabels:
-    {{- if $stlabels }}
-      {{- toYaml $stlabels | nindent 6 }}
-    {{- end }}
   template:
     spec:
       containers:
-        - name: keycloak
-          env:
-          - name: NODE_NAME2
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: spec.nodeName
-          envFrom:
-          - configMapRef:
-              name: {{ .Values.deployment.configMapEnv }}
+      - name: keycloak
+        env:
+        - name: TESTES
+          value: TESTES
+
+## StatefulSet RHBK gerado pelo operator
+# {{- $stannotations := .Values.deployment.annotations -}}
+# {{- $stlabels := .Values.deployment.labels -}}
+# ---
+# apiVersion: apps/v1
+# kind: StatefulSet
+# metadata:
+#   name: {{ $appName }}
+#   {{- if $stannotations }}
+#   annotations:
+#     {{- toYaml $stannotations | nindent 4 }}
+#   {{- end }}
+#   labels:
+#   {{- if $stlabels }}
+#     {{- toYaml $stlabels | nindent 4 }}
+#   {{- end }}
+# spec:
+#   selector:
+#     matchLabels:
+#     {{- if $stlabels }}
+#       {{- toYaml $stlabels | nindent 6 }}
+#     {{- end }}
+#   template:
+#     spec:
+#       containers:
+#         - name: keycloak
+#           env:
+#           - name: NODE_NAME2
+#             valueFrom:
+#               fieldRef:
+#                 apiVersion: v1
+#                 fieldPath: spec.nodeName
+#           envFrom:
+#           - configMapRef:
+#               name: {{ .Values.deployment.configMapEnv }}
