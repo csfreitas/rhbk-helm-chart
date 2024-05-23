@@ -65,7 +65,7 @@ deployment:
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
-    helm.sh/hook: pre-install 
+    helm.sh/hook: post-upgrade 
     helm.sh/hook-weight: "5"
   configMapEnv: teste
 db:
