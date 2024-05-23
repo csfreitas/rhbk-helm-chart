@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: {{ $stcontainerName }}
-          image: {{ $stimage }}
+          # image: {{ $stimage }}
           {{- if $stenv }}
           env:
             {{- toYaml $stenv | nindent 12 }}
