@@ -58,6 +58,8 @@ kcdeployment:
   replicas: 3
 deployment:
   labels:
+    app: keycloak
+    app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   configMapEnv: teste
 db:
