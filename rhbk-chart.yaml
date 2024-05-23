@@ -58,7 +58,7 @@ kcdeployment:
     requests:
       cpu: 1
       memory: 2Gi
-  replicas: 3
+  replicas: 1
 deployment:
   annotations: 
    helm.sh/hook: post-install,post-upgrade
