@@ -58,7 +58,7 @@ kcdeployment:
     requests:
       cpu: 1
       memory: 2Gi
-  replicas: 6
+  replicas: 3
 # deployment:
 #   configMapEnv: teste
 #   labels:
