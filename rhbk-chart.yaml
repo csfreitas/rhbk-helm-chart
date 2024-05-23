@@ -41,8 +41,8 @@ kcdeployment:
       value: 'true'
     # - name: cache-config-file
     #   value: 'cache-ispn.xml'
-    # - name: RUN_IN_CONTAINER
-    #   value: 'true'
+    - name: RUN_IN_CONTAINER
+      value: 'true'
   hostname:
     strict: false 
   http:
@@ -80,6 +80,8 @@ deployment:
         fieldRef:
           apiVersion: v1
           fieldPath: status.hostIP
+    - name: OI
+      value: "OI"
     - name: PRINT_ENV
       value: "true"
   envFrom:
