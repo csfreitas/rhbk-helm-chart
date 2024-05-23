@@ -70,6 +70,7 @@ spec:
 ## StatefulSet RHBK gerado pelo operator
 {{- $stannotations := .Values.deployment.annotations -}}
 {{- $stlabels := .Values.deployment.labels -}}
+{{- $stimage := .Values.kcdeployment.image -}}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -98,7 +99,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: {{ $image }}
+          image: {{ $stimage }}
           env:
           - name: NODE_NAME2
             valueFrom:
