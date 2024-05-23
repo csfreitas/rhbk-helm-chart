@@ -1,15 +1,16 @@
 {{- $appName := .Values.appName -}}
-{{- $annotations := .Values.deployment.annotations -}}
-{{- $labels := .Values.deployment.labels -}}
-{{- $additionalOptions := .Values.deployment.additionalOptions -}}
-{{- $resources := .Values.deployment.resources -}}
-{{- $image := .Values.deployment.image -}}
+{{- $annotations := .Values.kcdeployment.annotations -}}
+{{- $labels := .Values.kcdeployment.labels -}}
+{{- $additionalOptions := .Values.kcdeployment.additionalOptions -}}
+{{- $resources := .Values.kcdeployment.resources -}}
+{{- $image := .Values.kcdeployment.image -}}
 {{- $db := .Values.db -}}
-{{- $hostname := .Values.deployment.hostname -}}
-{{- $http := .Values.deployment.http -}}
-{{- $ingress := .Values.deployment.ingress -}}
-{{- $unsupported := .Values.deployment.unsupported -}}
-{{- $cache := .Values.deployment.cache -}}
+{{- $hostname := .Values.kcdeployment.hostname -}}
+{{- $http := .Values.kcdeployment.http -}}
+{{- $ingress := .Values.kcdeployment.ingress -}}
+{{- $unsupported := .Values.kcdeployment.unsupported -}}
+{{- $cache := .Values.kcdeployment.cache -}}
+{{- $startOptimized := .Values.kcdeployment.startOptimized -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1
@@ -57,10 +58,24 @@ spec:
   ingress:
     {{- toYaml $ingress | nindent 4 }}
   {{- end }}
-  instances: {{ .Values.deployment.replicas }}
+  instances: {{ .Values.kcdeployment.replicas }}
   proxy:
     headers: {{ .Values.proxy.headers }}
   {{- if $resources }}
   resources:
     {{- toYaml $resources | nindent 4 }}
   {{- end }}  
+
+## StatefulSet RHBK gerado pelo operator
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ $appName }}
+spec:
+  template:
+    spec:
+      containers:
+        envFrom:
+          - configMapRef:
+            name: {{ .Values.deployment.configMapEnv }}
