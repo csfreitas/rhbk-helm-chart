@@ -11,7 +11,7 @@ ports:
 kcdeployment:
   annotations: 
     helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-weight: -1
+    helm.sh/hook-weight: "-1"
   startOptimized: true
   # image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   image: registry.redhat.io/rhbk/keycloak-rhel9:24
@@ -63,7 +63,7 @@ kcdeployment:
 deployment:
   annotations: 
    helm.sh/hook: post-install,post-upgrade
-  helm.sh/hook-weight: 5
+   helm.sh/hook-weight: "5"
   labels:
     app: keycloak
     app.kubernetes.io/instance: rhbk
