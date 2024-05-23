@@ -66,6 +66,7 @@ deployment:
    helm.sh/hook-weight: "5"
   labels:
     app: keycloak
+    app3: keycloak3
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   containerName: keycloak
