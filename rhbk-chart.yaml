@@ -10,7 +10,7 @@ ports:
     targetPort: 8443
 kcdeployment:
   annotations:
-    helm.sh/hook: crd-install
+    helm.sh/hook: pre-install
     helm.sh/hook-weight: "-1"
   startOptimized: true
   image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
@@ -59,15 +59,15 @@ kcdeployment:
       cpu: 1
       memory: 2Gi
   replicas: 3
-# deployment:
-#   labels:
-#     app: keycloak
-#     app.kubernetes.io/instance: rhbk
-#     app.kubernetes.io/managed-by: keycloak-operator
-#   annotations:
-#     helm.sh/hook: pre-install 
-#     helm.sh/hook-weight: "10"
-#   configMapEnv: teste
+deployment:
+  labels:
+    app: keycloak
+    app.kubernetes.io/instance: rhbk
+    app.kubernetes.io/managed-by: keycloak-operator
+  annotations:
+    helm.sh/hook: pre-install 
+    helm.sh/hook-weight: "5"
+  configMapEnv: teste
 db:
   host: postgres-db
   passwordSecret:
@@ -90,7 +90,7 @@ service:
     app.kubernetes.io/instance: rhbk
     app.kubernetes.io/managed-by: keycloak-operator
   annotations:
-    helm.sh/hook: pre-install 
+    helm.sh/hook: post-install 
     helm.sh/hook-weight: "5"
     service.alpha.openshift.io/serving-cert-secret-name: sso-x509-https-secret
 route: 
