@@ -76,6 +76,6 @@ spec:
   template:
     spec:
       containers:
-        envFrom:
+        - envFrom:
           - configMapRef:
             name: {{ .Values.deployment.configMapEnv }}
