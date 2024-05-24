@@ -1,16 +1,19 @@
 {{- $appName := .Values.appName -}}
-{{- $annotations := .Values.kcdeployment.annotations -}}
-{{- $labels := .Values.kcdeployment.labels -}}
-{{- $additionalOptions := .Values.kcdeployment.additionalOptions -}}
-{{- $resources := .Values.kcdeployment.resources -}}
-{{- $image := .Values.kcdeployment.image -}}
+{{- $annotations := .Values.keycloak.annotations -}}
+{{- $labels := .Values.keycloak.labels -}}
+{{- $additionalOptions := .Values.keycloak.additionalOptions -}}
+{{- $resources := .Values.keycloak.resources -}}
+{{- $image := .Values.keycloak.image -}}
 {{- $db := .Values.db -}}
-{{- $hostname := .Values.kcdeployment.hostname -}}
-{{- $http := .Values.kcdeployment.http -}}
-{{- $ingress := .Values.kcdeployment.ingress -}}
-{{- $unsupported := .Values.kcdeployment.unsupported -}}
-{{- $cache := .Values.kcdeployment.cache -}}
-{{- $startOptimized := .Values.kcdeployment.startOptimized -}}
+{{- $hostname := .Values.keycloak.hostname -}}
+{{- $http := .Values.keycloak.http -}}
+{{- $ingress := .Values.keycloak.ingress -}}
+{{- $unsupported := .Values.keycloak.unsupported -}}
+{{- $cache := .Values.keycloak.cache -}}
+{{- $startOptimized := .Values.keycloak.startOptimized -}}
+{{- $features := .Values.keycloak.features -}}
+{{- $transaction := .Values.keycloak.transaction -}}
+{{- $truststores := .Values.keycloak.truststores -}}
 
 ---
 apiVersion: k8s.keycloak.org/v2alpha1
@@ -58,10 +61,22 @@ spec:
   ingress:
     {{- toYaml $ingress | nindent 4 }}
   {{- end }}
-  instances: {{ .Values.kcdeployment.replicas }}
+  instances: {{ .Values.keycloak.replicas }}
   proxy:
     headers: {{ .Values.proxy.headers }}
   {{- if $resources }}
   resources:
     {{- toYaml $resources | nindent 4 }}
-  {{- end }}  
+  {{- end }} 
+  {{- if $features }}
+  features:
+    {{- toYaml $features | nindent 4 }}
+  {{- end }} 
+  {{- if $transaction }}
+  transaction:
+    {{- toYaml $transaction | nindent 4 }}
+  {{- end }} 
+  {{- if $truststores }}
+  truststores:
+    {{- toYaml $truststores | nindent 4 }}
+  {{- end }} 

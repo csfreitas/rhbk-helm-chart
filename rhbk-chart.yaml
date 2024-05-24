@@ -8,10 +8,7 @@ ports:
     protocol: TCP
     port: 8443
     targetPort: 8443
-kcdeployment:
-  # annotations: 
-  #   helm.sh/hook: post-install
-  #   helm.sh/hook-weight: "-1"
+keycloak:
   startOptimized: false
   # image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   image: registry.redhat.io/rhbk/keycloak-rhel9:24
@@ -19,21 +16,6 @@ kcdeployment:
     configMapFile:
       key: cache-ispn.xml
       name: rhbk-caches-config
-  # unsupported:
-  #   podTemplate:
-  #     spec:
-  #       containers:
-  #       - env:
-  #         - name: NODE_NAME
-  #           valueFrom:
-  #             fieldRef:
-  #               fieldPath: spec.nodeName
-  #         - name: HOST_IP
-  #           valueFrom:
-  #             fieldRef:
-  #               fieldPath: status.hostIP
-  #         - name: PRINT_ENV
-  #           value: "true"
   additionalOptions:
     - name: health-enabled
       value: 'true'

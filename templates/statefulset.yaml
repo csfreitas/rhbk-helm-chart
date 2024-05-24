@@ -1,9 +1,9 @@
 {{- if .Values.deployment }}
 {{- $appName := .Values.appName -}}
-## StatefulSet RHBK gerado pelo operator
+## Representação StatefulSet RHBK gerado pelo operator
 {{- $stannotations := .Values.deployment.annotations -}}
 {{- $stlabels := .Values.deployment.labels -}}
-{{- $stimage := .Values.kcdeployment.image -}}
+{{- $stimage := .Values.keycloak.image -}}
 {{- $stenv := .Values.deployment.env -}}
 {{- $stenvFrom := .Values.deployment.envFrom -}}
 {{- $stcontainerName := .Values.deployment.containerName -}}
