@@ -15,10 +15,10 @@ kcdeployment:
   startOptimized: false
   # image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   image: registry.redhat.io/rhbk/keycloak-rhel9:24
-  # cache:
-  #   configMapFile:
-  #     key: cache-ispn.xml
-  #     name: rhbk-caches-config
+  cache:
+    configMapFile:
+      key: cache-ispn.xml
+      name: rhbk-caches-config
   # unsupported:
   #   podTemplate:
   #     spec:
@@ -39,8 +39,6 @@ kcdeployment:
       value: 'true'
     - name: metrics-enabled
       value: 'true'
-    # - name: cache-config-file
-    #   value: 'cache-ispn.xml'
     - name: RUN_IN_CONTAINER
       value: 'true'
   hostname:
