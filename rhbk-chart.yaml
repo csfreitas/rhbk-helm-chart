@@ -59,7 +59,7 @@ kcdeployment:
     requests:
       cpu: 1
       memory: 2Gi
-  replicas: 1
+  replicas: 3
 deployment:
   labels:
     app: keycloak
