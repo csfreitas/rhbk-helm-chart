@@ -40,28 +40,28 @@ keycloak:
       cpu: 1
       memory: 2Gi
   replicas: 3
-# deployment:
-#   labels:
-#     app: keycloak
-#     app.kubernetes.io/instance: rhbk
-#     app.kubernetes.io/managed-by: keycloak-operator
-#   containerName: keycloak
-#   env:
-#     - name: NODE_NAME
-#       valueFrom:
-#         fieldRef:
-#           apiVersion: v1
-#           fieldPath: spec.nodeName
-#     - name: HOST_IP
-#       valueFrom:
-#         fieldRef:
-#           apiVersion: v1
-#           fieldPath: status.hostIP
-#     - name: PRINT_ENV
-#       value: "true"
-#   envFrom:
-#     - configMapRef:
-#         name: teste
+deployment:
+  labels:
+    app: keycloak
+    app.kubernetes.io/instance: rhbk
+    app.kubernetes.io/managed-by: keycloak-operator
+  containerName: keycloak
+  env:
+    - name: NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: HOST_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.hostIP
+    - name: PRINT_ENV
+      value: "true"
+  envFrom:
+    - configMapRef:
+        name: teste
 db:
   host: postgres-db
   passwordSecret:
