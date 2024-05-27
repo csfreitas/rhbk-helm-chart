@@ -59,9 +59,9 @@ deployment:
           fieldPath: status.hostIP
     - name: PRINT_ENV
       value: "true"
-  envFrom:
-    - configMapRef:
-        name: teste
+  # envFrom:
+  #   - configMapRef:
+  #       name: teste
 db:
   host: postgres-db
   passwordSecret:
