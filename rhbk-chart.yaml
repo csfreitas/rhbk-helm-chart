@@ -12,10 +12,10 @@ keycloak:
   startOptimized: false
   # image: image-registry.openshift-image-registry.svc:5000/rhbk/rhbk-build
   image: registry.redhat.io/rhbk/keycloak-rhel9:24
-  cache:
-    configMapFile:
-      key: cache-ispn.xml
-      name: rhbk-caches-config
+  # cache:
+  #   configMapFile:
+  #     key: cache-ispn.xml
+  #     name: rhbk-caches-config
   additionalOptions:
     - name: health-enabled
       value: 'true'
